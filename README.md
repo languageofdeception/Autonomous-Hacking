@@ -1,2 +1,11 @@
+# DISCLAIMER
+This content has been published in support of the claims made in the book [The Language of Deception: Weaponizing Next Generation AI](https://www.amazon.com/Language-Deception-Weaponizing-Next-Generation/dp/1394222548/), written by [Justin Hutchens](https://www.linkedin.com/in/justinhutchens/) and published by [Wiley](https://www.wiley.com/). **This content is intended exclusively for academic purposes.**
+
 # Autonomous Hacking
- A Proof-of-Concept (PoC) script to demonstrate how LLMs could be used by next-generation malware to execute automated Command and Control (C2) operations, without any need for human intervention.
+This repository includes a Proof-of-Concept (PoC) script to demonstrate how LLMs could be used by threat actors to execute automated Command and Control (C2) operations, without any need for human intervention. The system is provided instructions that it is a "penetration tester" and is given the objective of compromising a specific target. It is then instructed on how it can use a custom interface to interact with the Kali Linux operating system that the agent process is running on.
+
+When launched, the system begins by enumerating the attack surface of the target system. It uses Network Mapper (Nmap) to start determining what Transport Control Protocol (TCP) services are running on the target, the versions of those services, and the underlying operating system of the target. Through this process, it discovers that a Secure Shell (SSH) service is running on TCP port 22 and that a Hypertext Transfer Protocol (HTTP) service is running on TCP port 80. It then uses this knowlwedge in subsequent adversarial attacks. It attempts to use the Nmap Scripting Engine (NSE) to run the SSH-Brute exploit to attempt to brute-force passwords for the terminal service. It also uses the HTTP-Enum NSE script and the Nikto web vulnerability scanner to further identify potential exposures on the web service. 
+
+[![LLM AutoHack](https://img.youtube.com/vi/MUKBrsXekWk/0.jpg)](https://www.youtube.com/watch?v=MUKBrsXekWk "LLM AutoHack")
+
+This is a very simple PoC (and deliberately so), but it does demonstrate the early signs that Large Language Models (LLMs) could potentially be used in the future for adaptive and fully autonomous C2 operations -- especially as these models continue to be scaled up, as more focused models are trained with a corpus of technical documentation, and as implementations are specifically tuned for more efficient tool usage.
